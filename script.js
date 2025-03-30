@@ -9,6 +9,9 @@ const computerScorePara = document.querySelector(".comp-score");
 const roundCounterPara = document.querySelector(".round-number")
 const roundWinnerPara = document.querySelector(".round-winner");
 const resetButton = document.querySelector(".reset-button");
+const gameBoard = document.querySelector(".game-board");
+const winnerPara = document.createElement("p");
+winnerPara.setAttribute("id", "winner");
 
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random() * 3);
@@ -23,8 +26,6 @@ function getComputerChoice() {
 }
 
 const buttonContainer = document.querySelector(".container");
-
-console.log(`Got a computer choice: ${getComputerChoice()}`)
 
 buttonContainer.addEventListener("click", (event) => {
     let target = event.target;
@@ -49,6 +50,18 @@ buttonContainer.addEventListener("click", (event) => {
     computerScorePara.textContent = `Computer score: ${computerScore}`;
     roundCounterPara.textContent = `Round ${roundCounter}`;
     roundWinnerPara.textContent = `${result}`;
+
+    if (roundCounter === 5) {
+        if (humanScore > computerScore) {
+            winnerPara.textContent = "You won!🎉🥳🎊🎁";
+        } else if (humanScore < computerScore) {
+            winnerPara.textContent = "You lost!💔💔";
+        } else {
+            winnerPara.textContent = "It's a tie!";
+        }
+
+        gameBoard.appendChild(winnerPara);
+    }
 });
 
 resetButton.addEventListener("click", () => {
@@ -62,6 +75,12 @@ resetButton.addEventListener("click", () => {
     computerScorePara.textContent = "Computer score: 0";
     roundCounterPara.textContent = "Round 1";
     roundWinnerPara.textContent = "Nobody.";
+    
+    for (const node of gameBoard.childNodes) {
+        if (node.id === "winner") {
+            gameBoard.removeChild(winnerPara);
+        }
+    }
 });
 
 function playRound(humChoice, compChoice) {
