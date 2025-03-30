@@ -8,6 +8,7 @@ const humanScorePara = document.querySelector(".hum-score");
 const computerScorePara = document.querySelector(".comp-score");
 const roundCounterPara = document.querySelector(".round-number")
 const roundWinnerPara = document.querySelector(".round-winner");
+const resetButton = document.querySelector(".reset-button");
 
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random() * 3);
@@ -48,6 +49,19 @@ buttonContainer.addEventListener("click", (event) => {
     computerScorePara.textContent = `Computer score: ${computerScore}`;
     roundCounterPara.textContent = `Round ${roundCounter}`;
     roundWinnerPara.textContent = `${result}`;
+});
+
+resetButton.addEventListener("click", () => {
+    humanScore = 0;
+    computerScore = 0;
+    roundCounter = 1;
+    humanSelection = null;
+    computerSelection = null;
+
+    humanScorePara.textContent = "Player score: 0";
+    computerScorePara.textContent = "Computer score: 0";
+    roundCounterPara.textContent = "Round 1";
+    roundWinnerPara.textContent = "Nobody.";
 });
 
 function playRound(humChoice, compChoice) {
