@@ -26,6 +26,7 @@ function getComputerChoice() {
 }
 
 const buttonContainer = document.querySelector(".container");
+const buttonNodeList = document.querySelectorAll(".container");
 
 buttonContainer.addEventListener("click", (event) => {
     let target = event.target;
@@ -51,15 +52,20 @@ buttonContainer.addEventListener("click", (event) => {
     roundCounterPara.textContent = `Round ${roundCounter}`;
     roundWinnerPara.textContent = `${result}`;
 
-    if (roundCounter === 5) {
+    if (roundCounter > 5) {
         if (humanScore > computerScore) {
             winnerPara.textContent = "You won!🎉🥳🎊🎁";
         } else if (humanScore < computerScore) {
             winnerPara.textContent = "You lost!💔💔";
         } else {
-            winnerPara.textContent = "It's a tie!";
+            winnerPara.textContent = "It's a tie!🤯🤯🤯";
+        }
+        
+        for (const button of document.getElementsByClassName("option")) {
+            button.disabled = true;
         }
 
+        roundCounterPara.textContent = "Game ends."
         gameBoard.appendChild(winnerPara);
     }
 });
@@ -80,6 +86,10 @@ resetButton.addEventListener("click", () => {
         if (node.id === "winner") {
             gameBoard.removeChild(winnerPara);
         }
+    }
+
+    for (const button of document.getElementsByClassName("option")) {
+        button.disabled = false;
     }
 });
 
