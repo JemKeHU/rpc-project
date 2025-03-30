@@ -50,12 +50,6 @@ function playGame() {
         }
     }
 
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-
     if (humanScore === computerScore) {
         console.log(`H ${humanScore} = C ${computerScore}\nBoth are winners!`);
     } else if (humanScore >= computerScore) {

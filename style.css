@@ -1,0 +1,48 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    background-color: rgb(69, 40, 40);
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    gap: 45px;
+}
+
+.game-heading,
+.board-heading {
+    color: white;
+    text-align: center;
+}
+
+.option {
+    font-size: 1.6rem;
+    padding: 16px;
+    max-width: 80px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+p {
+    color: white;
+    font-size: 1.2rem;
+}
+
+.reset-button {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    width: 100%;
+}
